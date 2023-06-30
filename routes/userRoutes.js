@@ -1,0 +1,14 @@
+import express from "express";
+import { signup } from "../controllers/userController.js";
+import { login } from "../controllers/userController.js";
+import { deleteUser } from "../controllers/userController.js";
+import { getUser } from "../controllers/userController.js";
+
+const router = express.Router();
+
+router.route("/signup").post(signup);
+router.route("/login").post(login);
+router.route("/user/:id").delete(deleteUser);
+router.route("/user/:role").get(getUser);
+
+export default router;
