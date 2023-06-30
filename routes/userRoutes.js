@@ -8,7 +8,5 @@ const router = express.Router();
 
 router.route("/signup").post(signup);
 router.route("/login").post(login);
-router.route("/user/:id").delete(deleteUser);
-router.route("/user/:role").get(getUser);
 
 export default router;
