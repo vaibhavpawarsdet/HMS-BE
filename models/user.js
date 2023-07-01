@@ -20,14 +20,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         validate: [validator.isStrongPassword, "Please enter a strong password"],
     },
-    role: {
-        type: String,
-        enum: ['doctor', 'user'],
-    },
     createdAt: {
         type: Date,
         default: Date.now,
     },
+    // profile: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Profile",
+    // }
 });
 
 export default mongoose.model("User", userSchema);
