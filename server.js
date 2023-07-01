@@ -4,11 +4,11 @@ dotenv.config();
 import cors from "cors";
 import { connectWithDb } from "./config/db.js";
 import user from "./routes/userRoutes.js";
-//import profile from "./routes/profileRoutes.js";
+import profileData from "./routes/profileRoutes.js";
 
 //express app
 const app = express();
-
+ 
 //middlewares
 app.use(cors());
 app.use(express.json());
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/v1", user);
-//app.use("/api/v1", profile);
+app.use("/api/v1", profileData);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "HMS Server Started"});

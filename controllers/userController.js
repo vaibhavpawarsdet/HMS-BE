@@ -1,5 +1,4 @@
 import User from "../models/user.js";
-//import Profile from "../models/profile.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -12,10 +11,6 @@ export const signup = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'Email or username already exists' });
         };
-
-        //create a new profile
-        // const newProfile = new Profile({ profilePhoto, age, sex, phone, address });
-        // await newProfile.save();
 
         //Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
