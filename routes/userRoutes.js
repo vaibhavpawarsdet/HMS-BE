@@ -1,8 +1,6 @@
 import express from "express";
 import { signup } from "../controllers/userController.js";
 import { login } from "../controllers/userController.js";
-import { deleteUser } from "../controllers/userController.js";
-import { getUser } from "../controllers/userController.js";
 
 const router = express.Router();
 
