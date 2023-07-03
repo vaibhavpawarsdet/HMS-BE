@@ -1,5 +1,5 @@
 import { getProfileDetails } from "../controllers/profileController.js";
-import { verifyToken } from "../controllers/verifyToken.js";
+import verifyToken from "../controllers/verifyToken.js";
 import { profileUpdate } from "../controllers/profileController.js";
 import express from "express";
 import multer from "multer";
