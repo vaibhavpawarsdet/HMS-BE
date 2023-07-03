@@ -19,15 +19,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: [validator.isStrongPassword, "Please enter a strong password"],
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    // profile: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Profile",
-    // }
-});
+    }, 
+},
+    { timestamps: true }
+);
 
-export default mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
+export default User;
