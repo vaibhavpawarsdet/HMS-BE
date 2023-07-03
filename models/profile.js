@@ -1,11 +1,12 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import validator from "validator";
+
 
 //profile schema
 const profileSchema = new mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
     profilePhoto: {
@@ -18,9 +19,10 @@ const profileSchema = new mongoose.Schema({
     },
     sex: {
         type: String,
-        enum: ["Male","Female", "Other"],
+        enum: ["Male", "Female", "Other"],
         required: true,
     },
+    
     phone: {
         type: String,
         required: true,
@@ -32,10 +34,9 @@ const profileSchema = new mongoose.Schema({
         required: true,
         maxlength: [100, "Address should be under 100 characters"],
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-});
+},
+    { timestamps: true },
+);
 
-export default mongoose.model("Profile", profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
+export default Profile;
