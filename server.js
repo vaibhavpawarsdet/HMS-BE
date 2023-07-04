@@ -5,6 +5,7 @@ import cors from "cors";
 import { connectWithDb } from "./config/db.js";
 import user from "./routes/userRoutes.js";
 import profile from "./routes/profileRoutes.js";
+import testReport from "./routes/testReportRoutes.js";
 
 //express app
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 app.use("/api/v1", user);
 app.use("/api/v2", profile);
+app.use("/api/v3", testReport);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "HMS Server Started"});
