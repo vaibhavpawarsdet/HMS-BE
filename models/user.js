@@ -19,7 +19,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: [validator.isStrongPassword, "Please enter a strong password"],
-    }, 
+    },
+    role: {
+        type: String,
+        enum: ["Docter", "User", "Admin"],
+        required: true,
+    },
 },
     { timestamps: true }
 );
