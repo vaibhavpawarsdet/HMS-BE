@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.route('/test-report').post( checkAuth("Admin"), generateTestReport );
 router.route('/test-report/:patientName').get( checkAuth("Admin"), getTestReportByPatientName );
-router.route('/testreport/:patientid').get( checkAuth("Admin"), getTestReportByPatientId );
+router.route('/test-report/:patientId').get( checkAuth("Admin"), getTestReportByPatientId );
 router.route('/test-report').get(checkAuth("Admin"), getAllTestReport );
 
 export default router;

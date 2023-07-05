@@ -48,8 +48,9 @@ export const getTestReportByPatientName = async (req, res) => {
 export const getTestReportByPatientId = async (req, res) => {
     try {
         const { patientId } = req.params;
-        console.log(patientName);
+        console.log(patientId);
         const testReport = await TestReport.find({ patientId });
+        
         if (!testReport) {
             return res.status(404).json({ error: 'Test report not found' });
         }
