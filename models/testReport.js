@@ -25,6 +25,10 @@ const patientDetailsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    patientId: {
+        type: String,
+        required: true,
+    },
     age: {
         type: Number,
         required: true,
