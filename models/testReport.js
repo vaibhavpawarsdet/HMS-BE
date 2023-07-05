@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const reportFormSchema = new mongoose.Schema({
     testName: {
@@ -22,6 +23,10 @@ const reportFormSchema = new mongoose.Schema({
 
 const patientDetailsSchema = new mongoose.Schema({
     patientName: {
+        type: String,
+        required: true,
+    },
+    patientId: {
         type: String,
         required: true,
     },
