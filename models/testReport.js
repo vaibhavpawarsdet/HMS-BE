@@ -17,8 +17,7 @@ const reportFormSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-},
-    { timestamps: true }
+}
 );
 
 const patientDetailsSchema = new mongoose.Schema({

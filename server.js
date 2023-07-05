@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/v1", user);
-app.use("/api/v2", profile);
-app.use("/api/v3", testReport);
+app.use("/api/v1", profile);
+app.use("/api/v1", testReport);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "HMS Server Started"});
