@@ -4,7 +4,7 @@ import User from "../models/user.js";
 //get profile information
 export const getProfileDetails = async (req, res) => {
     try {
-       // console.log(req.user);
+       // console.log(req.user); 
         const userId = req.user.userId;
 
         //find user by id and populate the username and email fields
