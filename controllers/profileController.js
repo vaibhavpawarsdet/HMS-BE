@@ -4,7 +4,7 @@ import User from "../models/user.js";
 //get profile information
 export const getProfileDetails = async (req, res) => {
     try {
-        console.log(req.user);
+       // console.log(req.user); 
         const userId = req.user.userId;
 
         //find user by id and populate the username and email fields
@@ -24,9 +24,10 @@ export const getProfileDetails = async (req, res) => {
         const profileData = {
             username: user.username,
             email: user.email,
+            patientId: profile.patientId,
+            profilePhoto: profile.profilePhoto,
             age: profile.age,
             sex: profile.sex,
-            profilePhoto: profile.profilePhoto,
             phone: profile.phone,
             address: profile.address,
         };
@@ -40,18 +41,19 @@ export const getProfileDetails = async (req, res) => {
 export const profileUpdate = async (req, res) => {
     try {
         const userId = req.user.userId;
-        console.log(userId);
-        console.log(req.body);
-        const { age, sex, phone, address } = req.body;
+       // console.log(userId);
+       // console.log(req.body);
+        const { patientId, profilePhoto, age, sex, phone, address } = req.body;
 
         //Find the profile associated with the user
         const profile = await Profile.findOne({ user: userId });
 
         if (profile) {
             let updatedProfile = {
+                patientId: profile.patientId,
+                profilePhoto: profile.profilePhoto,
                 age: profile.age,
                 sex: profile.sex,
-                profilePhoto: profile.profilePhoto,
                 phone: profile.phone,
                 address: profile.address,
             };
@@ -63,9 +65,8 @@ export const profileUpdate = async (req, res) => {
             return res.status(200).json(profile);
         };
         const newProfile = new Profile({
-            age, sex, phone, address, user: userId,
+            user: userId, patientId, profilePhoto, age, sex, phone, address,
         });
-        //update the profile fields
         //Save the updated profile
         await newProfile.save();
         return res.status(200).json(newProfile);
