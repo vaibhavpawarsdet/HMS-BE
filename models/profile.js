@@ -22,7 +22,7 @@ const profileSchema = new mongoose.Schema({
         required: [true, "Please provide age"],
         maxlength: [2, "Age should be under 2 characters"]
     },
-    sex: {
+    gender: {
         type: String,
         enum: ["Male", "Female", "Other"],
         required: true,
