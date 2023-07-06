@@ -44,7 +44,7 @@ const patientDetailsSchema = new mongoose.Schema({
         default: Date.now,
         required: true,
     },
-    testReportForm: reportFormSchema,
+    testReportForm: [ reportFormSchema ],
 },
     { timestamps: true }
 );
