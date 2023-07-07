@@ -12,13 +12,25 @@ export const signup = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'Email or username already exists' });
         };
-
         //Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
         //create a new user
-        const newUser = new User({ username, email, password: hashedPassword, role});
+        const newUser = new User({ username, email, password: hashedPassword, role });
         await newUser.save();
+
+        // Create the profile for the user
+        const profileData = {
+            user: newUser._id,
+            address: "Empty", // Set the default value for address
+            phone: "0", // Set the default value for phone
+            gender: "Empty", // Set the default value for gender
+            age: 0, // Set the default value for age
+            patientId: "Empty", // Set the default value for patientId
+        }; 
+
+        const profile = new Profile(profileData);
+        await profile.save();
 
         return res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
@@ -33,7 +45,7 @@ export const login = async (req, res) => {
 
         //Find user by email or username
         const user = await User.findOne({
-            $or: [{ email: email }, {username: username }],
+            $or: [{ email: email }, { username: username }],
         });
         if (!user) {
             return res.status(401).json({ message: "Invalid email/username or password" });
@@ -46,9 +58,9 @@ export const login = async (req, res) => {
         };
 
         //Generate JWT token
-        const token = jwt.sign({ 
-            userId: user._id, 
-            role: user.role, 
+        const token = jwt.sign({
+            userId: user._id,
+            role: user.role,
         }, "secretKey", { expiresIn: "2h" });
 
         return res.status(200).json({ token, role: user.role });

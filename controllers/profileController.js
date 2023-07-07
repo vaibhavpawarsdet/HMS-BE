@@ -27,7 +27,7 @@ export const getProfileDetails = async (req, res) => {
             patientId: profile.patientId,
             profilePhoto: profile.profilePhoto,
             age: profile.age,
-            sex: profile.sex,
+            gender: profile.gender,
             phone: profile.phone,
             address: profile.address,
         };
@@ -43,7 +43,7 @@ export const profileUpdate = async (req, res) => {
         const userId = req.user.userId;
        // console.log(userId);
        // console.log(req.body);
-        const { patientId, profilePhoto, age, sex, phone, address } = req.body;
+        const { patientId, profilePhoto, age, gender, phone, address } = req.body;
 
         //Find the profile associated with the user
         const profile = await Profile.findOne({ user: userId });
@@ -53,7 +53,7 @@ export const profileUpdate = async (req, res) => {
                 patientId: profile.patientId,
                 profilePhoto: profile.profilePhoto,
                 age: profile.age,
-                sex: profile.sex,
+                gender: profile.gender,
                 phone: profile.phone,
                 address: profile.address,
             };
@@ -61,11 +61,12 @@ export const profileUpdate = async (req, res) => {
             if (req.file) {
                 updatedProfile.profilePhoto = req.file.filename;
             }
+            Object.assign(updatedProfile, req.body);
             await profile.updateOne(updatedProfile, { _id: profile._id })
             return res.status(200).json(profile);
         };
         const newProfile = new Profile({
-            user: userId, patientId, profilePhoto, age, sex, phone, address,
+            user: userId, patientId, profilePhoto, age, gender, phone, address,
         });
         //Save the updated profile
         await newProfile.save();
@@ -74,4 +75,4 @@ export const profileUpdate = async (req, res) => {
         console.error(error);
         return res.status(500).json({ message: "Internal server error" });
     };
-};
+}; 
