@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Profile from "../models/profile.js";
 
 export const signup = async (req, res) => {
     try {
@@ -28,7 +29,7 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { email, username, password } = req.body;
+        const { email, username, role, password } = req.body;
 
         //Find user by email or username
         const user = await User.findOne({
@@ -50,7 +51,7 @@ export const login = async (req, res) => {
             role: user.role, 
         }, "secretKey", { expiresIn: "2h" });
 
-        return res.status(200).json({ token });
+        return res.status(200).json({ token, role: user.role });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Internal server error" });
