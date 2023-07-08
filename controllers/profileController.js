@@ -33,7 +33,12 @@ export const getProfileDetails = async (req, res) => {
             return res.status(200).json(profile);
             //return res.status(404).json({ message: "Profile not found" });
         };
-        res.status(200).json(profile);
+
+        const profileData = {
+            username: user.username,
+            email: user.email,
+        };
+        res.status(200).json({...profile.toJSON(), ...profileData});
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Internal server error" });
