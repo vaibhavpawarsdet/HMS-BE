@@ -22,11 +22,6 @@ export const signup = async (req, res) => {
         // Create the profile for the user
         const profileData = {
             user: newUser._id,
-            address: "Empty", // Set the default value for address
-            phone: "0", // Set the default value for phone
-            gender: "Empty", // Set the default value for gender
-            age: 0, // Set the default value for age
-            patientId: "Empty", // Set the default value for patientId
         }; 
 
         const profile = new Profile(profileData);
@@ -61,7 +56,7 @@ export const login = async (req, res) => {
         const token = jwt.sign({
             userId: user._id,
             role: user.role,
-        }, "secretKey", { expiresIn: "2h" });
+        }, "secretKey", { expiresIn: "10h" });
 
         return res.status(200).json({ token, role: user.role });
     } catch (error) {
