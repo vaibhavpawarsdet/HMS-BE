@@ -32,7 +32,7 @@ export const getProfileDetails = async (req, res) => {
             await profile.save();
             return res.status(200).json(profile);
             //return res.status(404).json({ message: "Profile not found" });
-        };
+        }; 
         res.status(200).json(profile);
     } catch (error) {
         console.error(error);
