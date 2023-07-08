@@ -14,8 +14,7 @@ const profileSchema = new mongoose.Schema({
         unique: true,
     },
     profilePhoto: {
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
     age: {
         type: Number,
