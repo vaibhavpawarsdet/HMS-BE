@@ -12,7 +12,6 @@ const profileSchema = new mongoose.Schema({
     patientId: {
         type: String,
         unique: true,
-
     },
     profilePhoto: {
         data: Buffer,
