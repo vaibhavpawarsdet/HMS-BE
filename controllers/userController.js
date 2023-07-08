@@ -18,15 +18,6 @@ export const signup = async (req, res) => {
         //create a new user
         const newUser = new User({ username, email, password: hashedPassword, role });
         await newUser.save();
-
-        // Create the profile for the user
-        const profileData = {
-            user: newUser._id,
-        }; 
-
-        const profile = new Profile(profileData);
-        await profile.save();
-
         return res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
         console.error(error);
