@@ -1,6 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import validator from "validator";
-
 
 //profile schema
 const profileSchema = new mongoose.Schema({
@@ -11,15 +9,12 @@ const profileSchema = new mongoose.Schema({
     },
     patientId: {
         type: String,
-        unique: true,
-
     },
     profilePhoto: {
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
     age: {
-        type: Number,
+        type: String,
         maxlength: [2, "Age should be under 2 characters"]
     },
     gender: {
@@ -30,7 +25,6 @@ const profileSchema = new mongoose.Schema({
     phone: {
         type: String,
         maxlength: [10, "Phone should be under 10 characters"],
-        validate: [validator.isNumeric, "Please enter number into correct format"],
     },
     address: {
         type: String,
