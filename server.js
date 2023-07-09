@@ -6,6 +6,10 @@ import { connectWithDb } from "./config/db.js";
 import user from "./routes/userRoutes.js";
 import profile from "./routes/profileRoutes.js";
 import testReport from "./routes/testReportRoutes.js";
+import medicalHistory from "./routes/medicalHistoryRoutes.js";
+import doctorList from "./routes/doctorListRoutes.js";
+import bookAppointment from "./routes/bookAppointmentRoutes.js";
+import bodyParser from "body-parser";
 
 //express app
 const app = express();
@@ -14,11 +18,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //routes
 app.use("/api/v1", user);
 app.use("/api/v1", profile);
 app.use("/api/v1", testReport);
+app.use("/api/v1", medicalHistory);
+app.use("/api/v1", doctorList);
+app.use("/api/v1", bookAppointment);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "HMS Server Started"});
