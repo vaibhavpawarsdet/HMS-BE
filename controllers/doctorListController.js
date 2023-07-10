@@ -37,7 +37,7 @@ export const getDoctorListByName = async (req, res) => {
         console.error(error);
         res.status(500).json({ messgae: "Internal Server error" });
     }; 
-};
+};    
 
 export const getDoctorList = async (req, res) => {
     try {
