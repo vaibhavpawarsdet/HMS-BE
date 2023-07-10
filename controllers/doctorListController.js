@@ -1,18 +1,21 @@
 import DoctorList from "../models/doctorList.js";
+import fs from "fs";
+import path, { resolve } from "path";
 
 export const addDoctor = async (req, res) => {
     try {
-        const { name, doctorPhoto, specialization, description } = req.body;
+        const { name, specialization, description } = req.body;
+        const __dirname = resolve();
         //Add a new doctor to list
         const doctor = new DoctorList({
             name,  
             description, 
             specialization,
+            doctorPhoto: {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: 'image/png'
+            }
         });
-        // Handle doctor photo upload
-        if (req.file) {
-            doctor.doctorPhoto = req.file.filename;
-        };
         await doctor.save();
         res.status(201).json(doctor);
     } catch (error) {
