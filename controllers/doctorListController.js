@@ -33,11 +33,13 @@ export const getDoctorListByName = async (req, res) => {
             res.status(404).json({ messgae: "Doctor is not found" });
         }
         res.status(200).json(doctorList);
-    } catch (error) {
+    } catch (error) 
+    {
         console.error(error);
         res.status(500).json({ messgae: "Internal Server error" });
     }; 
-};    
+
+};        
 
 export const getDoctorList = async (req, res) => {
     try {
@@ -51,4 +53,5 @@ export const getDoctorList = async (req, res) => {
         console.error(error);
         res.status(500).json({ messgae: "Internal server error" });
     };
+
 };
