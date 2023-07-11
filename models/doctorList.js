@@ -18,7 +18,5 @@ const doctorDetailsSchema = new mongoose.Schema({
 },
     { timestamps: true }
 );
-
-
 const DoctorList = mongoose.model("DoctorList", doctorDetailsSchema);
 export default DoctorList;   
