@@ -1,5 +1,7 @@
 import Profile from "../models/profile.js"
 import User from "../models/user.js";
+import fs from "fs";
+import path, { resolve } from "path";
 
 //get profile information
 export const getProfileDetails = async (req, res) => {
@@ -59,17 +61,18 @@ export const profileUpdate = async (req, res) => {
         if (!profile) {
             return res.status(404).json({ message: "Profile not found" });
         }
+        const __dirname = resolve();
         let updatedProfile = {
             patientId: patientId || profile.patientId,
             age: age || profile.age,
             gender: gender || profile.gender,
             phone: phone || profile.phone,
             address: address || profile.address,
+            profilePhoto: {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: 'image/png'
+            }
         };
-        //Handle profile photo upload
-        if (req.file) {
-            updatedProfile.profilePhoto = req.file.filename;
-        }
         await profile.updateOne(updatedProfile, { _id: profile._id })
         res.status(200).json(updatedProfile);
     } catch (error) {
