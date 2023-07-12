@@ -29,11 +29,11 @@ export const addBookAppointment = async (req, res) => {
         const userId = req.user.userId;
         //const patientId = req.params;
         const user = await User.findById(userId);
-        console.log(userId);
+        //console.log(userId);
         const { date, doctorName } = req.body;
         //fetching user profile the username and patientId
         const profile = await Profile.findOne({ user: userId });
-        console.log(profile);
+       // console.log(profile);
         if (!profile) {
             return res.status(404).json({ message: "Profile not found" });
         }
@@ -80,3 +80,27 @@ export const getAllAppointments = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
+export const getAppointmentsByPatientId = async (req, res) => {
+    try {
+        const userId = req.user.userId;
+        //const patientId = req.params;
+        const user = await User.findById(userId);
+       // console.log(userId);
+        const { date, doctorName } = req.body;
+        //fetching user profile the username and patientId
+        const profile = await Profile.findOne({ user: userId });
+        //console.log(profile);
+        if (!profile) {
+            return res.status(404).json({ message: "Profile not found" });
+        }
+        // const patientId = profile.patientId;
+        // console.log(patientId);
+        //Find appointments by doctorName
+        const appointments = await BookAppointment.find({ patientId: profile.patientId });
+        res.status(200).json(appointments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "internal server error" });
+    }
+}; 
