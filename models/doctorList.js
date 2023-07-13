@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const doctorDetailsSchema = new mongoose.Schema({
     doctorPhoto: {
-        type: String,
+        data: Buffer,
+        contentType: String
     },
     name: {
         type: String,
@@ -17,6 +18,5 @@ const doctorDetailsSchema = new mongoose.Schema({
 },
     { timestamps: true }
 );
-
 const DoctorList = mongoose.model("DoctorList", doctorDetailsSchema);
 export default DoctorList;
