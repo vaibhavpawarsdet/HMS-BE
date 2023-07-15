@@ -1,7 +1,8 @@
 import {
     getDoctorList,
     getDoctorListByName,
-    addDoctor
+    addDoctor,
+    deleteDoctorList
 } from "../controllers/doctorListController.js";
 import { getDoctorNames } from "../controllers/bookAppointmentController.js";
 import { upload } from "../controllers/photoUploadController.js";
@@ -14,5 +15,6 @@ router.route("/adddoctor").post( checkAuth("Admin"), upload.single("doctorPhoto"
 router.route("/doctorlist").get( getDoctorList );
 router.route("/doctorlist/:name").get( getDoctorListByName );
 router.route("/doctor").get( getDoctorNames );
+router.route("/deletelist").delete(deleteDoctorList);
 
 export default router;
