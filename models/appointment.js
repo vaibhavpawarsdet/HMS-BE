@@ -5,9 +5,15 @@ const bookAppointmentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    consultationFees: {
+        type: Number,
+    },
     date: {
         type: String,
         required: true,
+    },
+    time: {
+        type: String,
     },
     user: {
         type: Schema.Types.ObjectId,
@@ -23,6 +29,11 @@ const bookAppointmentSchema = new mongoose.Schema({
         type: Schema.Types.String,
         ref: 'Profile',
         required: true,
+    },
+    doctorId: {
+        type: Schema.Types.String,
+        ref: 'DoctorList',
+       // required: true,
     },
 },
     { timestamps: true }
