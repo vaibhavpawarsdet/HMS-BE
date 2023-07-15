@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.route("/bookapp").post(verifyToken, addBookAppointment);
 router.route("/appointment/:doctorName").get(checkAuth("Doctor"), getAppointmentsByDoctorNames);
-router.route("/allappointments").get(checkAuth("Doctor"), getAllAppointments)
+router.route("/allappointments").get(checkAuth("Admin"), getAllAppointments)
 router.route("/appointment/patient/:patientId").get(checkAuth("User"), getAppointmentsByPatientId);
 router.route("/deleteappointments").delete( deleteAllAppointments );
 router.route("/appointments/doctor/:doctorId").get( checkAuth("Doctor"), getAppointmentsByDoctorId);
