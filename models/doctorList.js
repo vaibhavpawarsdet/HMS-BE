@@ -1,19 +1,25 @@
 import mongoose from "mongoose";
 
 const doctorDetailsSchema = new mongoose.Schema({
-    doctorPhoto: {
-        data: Buffer,
-        contentType: String
-    },
     name: {
         type: String,
         unique: true,
+    },
+    doctorId: {
+        type: String,
     },
     specialization: {
         type: String,
     },
     description: {
         type: String,
+    },
+    consultationFees: {
+        type: Number,
+    },
+    doctorPhoto: {
+        data: Buffer,
+        contentType: String
     },
 },
     { timestamps: true }
