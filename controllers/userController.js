@@ -46,9 +46,10 @@ export const login = async (req, res) => {
         const token = jwt.sign({
             userId: user._id,
             role: user.role,
+            //patientId: user.patientId,
         }, "secretKey", { expiresIn: "10h" });
 
-        return res.status(200).json({ token, role: user.role });
+        return res.status(200).json({ token, role: user.role, patientId: user.patientId });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: "Internal server error" });
