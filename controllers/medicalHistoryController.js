@@ -1,4 +1,4 @@
-import Profile from "../models/profile.js";
+import User from "../models/user.js";
 import TestReport from "../models/testReport.js";
 
 export const getTestReportByPatientId = async (req, res) => {
@@ -6,7 +6,7 @@ export const getTestReportByPatientId = async (req, res) => {
         const { patientId } = req.params;
         //console.log(patientId);
 
-        const patient = await Profile.findOne({ patientId });
+        const patient = await User.findOne({ patientId });
         //console.log(patient);
         if (!patient) {
             return res.status(404).json({ message: "Patient not found" });
