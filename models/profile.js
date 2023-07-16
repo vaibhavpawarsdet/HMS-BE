@@ -7,9 +7,6 @@ const profileSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    patientId: {
-        type: String,
-    },
     profilePhoto: {
         data: Buffer,
         contentType: String

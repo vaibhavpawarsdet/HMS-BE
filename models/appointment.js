@@ -27,13 +27,13 @@ const bookAppointmentSchema = new mongoose.Schema({
     },
     patientId: {
         type: Schema.Types.String,
-        ref: 'Profile',
+        ref: 'User',
         required: true,
     },
     doctorId: {
         type: Schema.Types.String,
         ref: 'DoctorList',
-       // required: true,
+        required: true,
     },
 },
     { timestamps: true }

@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
         enum: ["Doctor", "User", "Admin"],
         required: true,
     },
+    patientId: {
+        type: String,
+        required: true,
+    },
 },
     { timestamps: true }
 );

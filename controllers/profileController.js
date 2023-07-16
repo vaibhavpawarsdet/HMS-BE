@@ -24,7 +24,7 @@ export const getProfileDetails = async (req, res) => {
                 user: userId,
                 username: user.username,
                 email: user.email,
-                patientId: "",
+                patientId: user.patientId,
                 age: "",
                 gender: "Male",
                 phone: "",
@@ -39,6 +39,7 @@ export const getProfileDetails = async (req, res) => {
         const profileData = {
             username: user.username,
             email: user.email,
+            patientId: user.patientId,
         };
         res.status(200).json({...profile.toJSON(), ...profileData});
     } catch (error) {
@@ -53,7 +54,7 @@ export const profileUpdate = async (req, res) => {
         //console.log(userId);
         //console.log(req.body);
 
-        const { patientId, age, gender, phone, address } = req.body;
+        const { age, gender, phone, address, profilePhoto } = req.body;
 
         //Find the profile associated with the user
         const profile = await Profile.findOne({ user: userId });
@@ -63,13 +64,12 @@ export const profileUpdate = async (req, res) => {
         }
         const __dirname = resolve();
         let updatedProfile = {
-            patientId: patientId || profile.patientId,
             age: age || profile.age,
             gender: gender || profile.gender,
             phone: phone || profile.phone,
             address: address || profile.address,
             profilePhoto: {
-                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename )),
                 contentType: 'image/png'
             }
         };
