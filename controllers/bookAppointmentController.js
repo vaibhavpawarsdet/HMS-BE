@@ -11,20 +11,14 @@ export const addBookAppointment = async (req, res) => {
         //console.log(userId);
         const { date, time, consultationFees, doctorName } = req.body;
 
-        //fetching user profile the username and patientId
-        const profile = await Profile.findOne({ user: userId });
-        // console.log(profile);
-        if (!profile) {
-            return res.status(404).json({ message: "Profile not found" });
-        }
         const doctorLists = await DoctorList.find({});
         //Create a new Appointment instance
         const appointment = new BookAppointment({
             date, doctorName,
             time, consultationFees,
+            user: user._id,
             username: user.username,
-            user: profile.user,
-            patientId: profile.patientId,
+            patientId: user.patientId,
             doctorId: doctorLists.doctorId,
         });
         const doctorList = await DoctorList.findOne({ name: doctorName });
@@ -89,15 +83,15 @@ export const getAppointmentsByPatientId = async (req, res) => {
         // console.log(userId);
         const { date, doctorName } = req.body;
         //fetching user profile the username and patientId
-        const profile = await Profile.findOne({ user: userId });
+        //const profile = await Profile.findOne({ user: userId });
         //console.log(profile);
-        if (!profile) {
-            return res.status(404).json({ message: "Profile not found" });
-        }
+        // if (!profile) {
+        //     return res.status(404).json({ message: "Profile not found" });
+        // }
         // const patientId = profile.patientId;
         // console.log(patientId);
         //Find appointments by doctorName
-        const appointments = await BookAppointment.find({ patientId: profile.patientId });
+        const appointments = await BookAppointment.find({ patientId: user.patientId });
         res.status(200).json(appointments);
     } catch (error) {
         console.error(error);
