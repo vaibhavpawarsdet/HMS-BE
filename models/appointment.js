@@ -33,7 +33,7 @@ const bookAppointmentSchema = new mongoose.Schema({
     doctorId: {
         type: Schema.Types.String,
         ref: 'DoctorList',
-       // required: true,
+        required: true,
     },
 },
     { timestamps: true }
