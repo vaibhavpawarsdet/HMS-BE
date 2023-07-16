@@ -27,7 +27,7 @@ const bookAppointmentSchema = new mongoose.Schema({
     },
     patientId: {
         type: Schema.Types.String,
-        ref: 'Profile',
+        ref: 'User',
         required: true,
     },
     doctorId: {
