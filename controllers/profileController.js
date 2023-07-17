@@ -32,10 +32,9 @@ export const getProfileDetails = async (req, res) => {
                 profilePhoto: "",
             });
             await profile.save();
-            return res.status(200).json(profile);
+            return res.status(200).json({profile});
             //return res.status(404).json({ message: "Profile not found" });
         };
-
         const profileData = {
             username: user.username,
             email: user.email,
@@ -80,3 +79,20 @@ export const profileUpdate = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     };
 }; 
+
+export const deleteAllProfiles = async (req, res) => {
+    try {
+        // Delete all profiles
+        const deletedProfiles = await Profile.deleteMany({});
+
+        // Check if any profiles were deleted
+        if (deletedProfiles.deletedCount === 0) {
+            return res.status(404).json({ message: 'No profiles found to delete' });
+        }
+
+        return res.status(200).json({ message: 'Profiles deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+};
