@@ -19,7 +19,7 @@ export const addDoctor = async (req, res) => {
             }
         });
         await doctor.save();
-        res.status(201).json(doctor);
+        res.status(201).json({doctor});
     } catch (error) {
         console.error(error);
         return res.status(500).json({ messgae: "Internal server error" });
@@ -46,18 +46,36 @@ export const getDoctorListByName = async (req, res) => {
 
 export const getDoctorList = async (req, res) => {
     try {
-        const doctorList = await DoctorList.find();
-        if (!doctorList) {
-            res.status(404).json({ messgae: "Doctor list not found" });
-        };
-        
-        res.status(200).json(doctorList);
+        // Retrieve the list of doctors from the database
+        const doctors = await DoctorList.find({}, 'name doctorId specialization description consultationFees');
+
+        // Check if any doctors are found
+        if (doctors.length === 0) {
+            return res.status(404).json({ message: 'No doctors found' });
+        }
+
+        // Return the list of doctors
+        res.status(200).json(doctors);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ messgae: "Internal server error" });
-    };
-
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 };
+
+// export const getDoctorList = async (req, res) => {
+//     try {
+//         const doctorList = await DoctorList.find({});
+//         if (!doctorList) {
+//             res.status(404).json({ messgae: "Doctor list not found" });
+//         };
+        
+//         res.status(200).json(doctorList);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ messgae: "Internal server error" });
+//     };
+
+// };
 export const deleteDoctorList = async (req, res) => {
     try {
         // Delete all documents in the DoctorList collection
