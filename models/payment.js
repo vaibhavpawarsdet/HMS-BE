@@ -4,7 +4,7 @@ const paymentSchema = new mongoose.Schema({
     currency: {
         type: String,
     },
-    consulationFees: {
+    consultationFees: {
         type: String,
     },
 },
