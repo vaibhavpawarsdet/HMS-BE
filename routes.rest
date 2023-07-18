@@ -1,0 +1,136 @@
+### 
+
+POST http://localhost:3000/api/v1/signup
+Content-Type: application/json
+
+{
+    "username": "shruti",
+    "email": "shruti@gmail.com",
+    "password": "remo12",
+    "role": "User"
+}
+
+###
+
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "shruti@gmail.com",
+    "password": "remo12"
+}
+
+
+### 
+
+POST http://localhost:3000/api/v1/signup
+Content-Type: application/json
+
+{
+    "username": "shrutidi",
+    "email": "shrutidi@gmail.com",
+    "password": "remo12",
+    "role": "Docter"
+}
+###
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "shrutidi@gmail.com",
+    "password": "remo12"
+}
+###
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "mithlesh@gmail.com",
+    "password": "mithlesh12"
+}
+###
+POST http://localhost:3000/api/v1/adddoctor
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGE1NDk5YmFiNzI0MGYyZDFhNzNkNWQiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODkzNDk5MTYsImV4cCI6MTY4OTM4NTkxNn0.U-sSvv9sTlo8UjKJtQY8Fif0L_NBCjx42p08NCx_BWk
+
+{
+    "name": "Dr. Smita",
+    "specialization": "MBBS, MD medicine",
+    "description": "I have 14 years of experience in consulting",
+    "consultationFees": 300
+}
+
+###
+POST http://localhost:3000/api/v1/bookapp/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYTVmNmE2NTAzZmIxOGE5MmJjMTUiLCJyb2xlIjoiVXNlciIsImlhdCI6MTY4OTE4MzYxMiwiZXhwIjoxNjg5MjE5NjEyfQ.12sg_dwpFqZdmPEQ8yjdSNXbNM-BXyFZm7WwOrOIBxI
+
+{
+    "date": "13/07/2023",
+    "doctorName": "Dr Adithya"
+}
+
+###
+GET http://localhost:3000/api/v1/appointment/doctor/Dr. Kiran
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYzYyZWYxNWQ4MjllZjI5YzQxY2YiLCJyb2xlIjoiRG9jdGVyIiwiaWF0IjoxNjg4OTEzNDU3LCJleHAiOjE2ODg5NDk0NTd9.pttXHI4HAFbTU7ENFhPk1QQI1y-_Ezmn8oxtuOS0N64
+
+###
+GET http://localhost:3000/api/v1/appointment/patient/122478ry
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYTVmNmE2NTAzZmIxOGE5MmJjMTUiLCJyb2xlIjoiVXNlciIsImlhdCI6MTY4OTE4MzYxMiwiZXhwIjoxNjg5MjE5NjEyfQ.12sg_dwpFqZdmPEQ8yjdSNXbNM-BXyFZm7WwOrOIBxI
+
+###
+GET http://localhost:3000/api/v1/allappointments/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYzYyZWYxNWQ4MjllZjI5YzQxY2YiLCJyb2xlIjoiRG9jdGVyIiwiaWF0IjoxNjg5MTgzNTcxLCJleHAiOjE2ODkyMTk1NzF9.BrVvx5toW63QP12foAgFI5ez9MuIDqhEN47w9WTu9i0
+
+###
+GET http://localhost:3000/api/v1/doctorlist
+
+### 
+GET http://localhost:3000/api/v1/doctorlist/Dr Smita
+
+###
+GET http://localhost:3000/api/v1/doctor
+
+###
+PUT  http://localhost:3000/api/v1/updateprofile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYzYyZWYxNWQ4MjllZjI5YzQxY2YiLCJyb2xlIjoiRG9jdGVyIiwiaWF0IjoxNjg5MTUwODU1LCJleHAiOjE2ODkxODY4NTV9.BYheM5m6r0swwgTJRqKLKCa-fVz2AnI6VwWfLk_H10k
+{
+   "patientId": "123cv678",
+   "age": 39,
+    "phone":"85885457858",
+    "gender":"Female",
+    "address":"apartment no 2, express lane no 43, apt"
+}
+
+###
+GET http://localhost:3000/api/v1/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYTVmNmE2NTAzZmIxOGE5MmJjMTUiLCJyb2xlIjoiVXNlciIsImlhdCI6MTY4OTE4MzYxMiwiZXhwIjoxNjg5MjE5NjEyfQ.12sg_dwpFqZdmPEQ8yjdSNXbNM-BXyFZm7WwOrOIBxI
+
+###
+POST http://localhost:3000/api/v1/test-report
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhNTU4OWZmZDJjOGViYTlmZjk0ZGYiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODg4ODQ2MzAsImV4cCI6MTY4ODkyMDYzMH0.hogBJ7---CiTmmzMs4a4yBqKaoEJqLFor0jLdL_iJfA
+
+{
+  "patientName": "shruti",
+  "patientId": "123cv678",
+  "age": 29,
+  "sex": "Male",
+  "registerdOn": "",
+  "testReportForm": { 
+    "testName": "Red Blood Cells",
+    "value": 125.10,
+    "unit": "thousand/mm3",
+    "standardValue": "120 - 250"
+    }
+}
+
+###
+GET http://localhost:3000/api/v1/test-report
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGE2OWY4Y2UyNzI0ZWJkMjNiYjU4MzUiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODg2NDE0NjcsImV4cCI6MTY4ODY0ODY2N30.2dG-h0LL9Ysgban_q2cPlMXqbXfMnZ3EuKCewCXmlWU
+
+###
+GET http://localhost:3000/api/v1/patientreport/123cv678/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGFhYTVmNmE2NTAzZmIxOGE5MmJjMTUiLCJyb2xlIjoiVXNlciIsImlhdCI6MTY4ODkxNDU3MCwiZXhwIjoxNjg4OTUwNTcwfQ.328Bq3ueF_KZwJktQbIrnk_MydMDZPO9Fe3Y5YV5VA0
