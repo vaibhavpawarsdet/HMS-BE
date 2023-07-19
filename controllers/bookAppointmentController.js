@@ -1,5 +1,4 @@
 import BookAppointment from '../models/appointment.js';
-import Profile from "../models/profile.js";
 import User from "../models/user.js";
 import DoctorList from '../models/doctorList.js';
 
