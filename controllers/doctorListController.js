@@ -47,7 +47,7 @@ export const getDoctorListByName = async (req, res) => {
 export const getDoctorList = async (req, res) => {
     try {
         // Retrieve the list of doctors from the database
-        const doctors = await DoctorList.find({}, 'name doctorId specialization description consultationFees');
+        const doctors = await DoctorList.find({});
 
         // Check if any doctors are found
         if (doctors.length === 0) {
