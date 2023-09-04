@@ -9,6 +9,7 @@ import testReport from "./routes/testReportRoutes.js";
 import medicalHistory from "./routes/medicalHistoryRoutes.js";
 import doctorList from "./routes/doctorListRoutes.js";
 import bookAppointment from "./routes/bookAppointmentRoutes.js";
+import billing from "./routes/billingRoutes.js";
 import bodyParser from "body-parser";
 
 //express app
@@ -28,6 +29,7 @@ app.use("/api/v1", testReport);
 app.use("/api/v1", medicalHistory);
 app.use("/api/v1", doctorList);
 app.use("/api/v1", bookAppointment);
+app.use("/api/v1", billing);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "HMS Server Started" });
