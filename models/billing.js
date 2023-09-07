@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const billingModel = new mongoose.Schema({
-    items: {
+    item: {
         type: String,
         required: true,
     },
