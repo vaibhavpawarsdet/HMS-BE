@@ -3,9 +3,9 @@ import Lists from "../models/lists.js";
 
 export const createBills = async (req, res) => {
     try {
-        const {items, quantity, price, totalPrice} = req.body;
+        const {item, quantity, price, totalPrice} = req.body;
         //create a new bill
-        let createBill = new Billing({ items, quantity, price, totalPrice });
+        let createBill = new Billing({ item, quantity, price, totalPrice });
         //save bill
         await createBill.save();
         return res.status(201).json(createBill);
