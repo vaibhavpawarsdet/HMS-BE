@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const billingModel = new mongoose.Schema({
+const itemScehma = new mongoose.Schema({
     item: {
         type: String,
     },
